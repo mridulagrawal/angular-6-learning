@@ -1,0 +1,24 @@
+<p>
+  server works!
+</p>
+<!-- String interpolation binding -->
+<p>{{name}}</p>
+<!-- property binding [ ] = " " -->
+<button class="btn btn-primary" [disabled]="buttonProp">Hey</button>
+<!-- Event binding -->
+<button class="btn btn-primary" (click)="clickMe()">{{textBtn}}</button>
+<label>normal input field</label>
+<input type="text" class="form-control" (input)="myInput($event)">
+<p>{{inputValue}}</p>
+<!-- two way data binding [(ngModel)] -->
+<label>two way input field</label>
+<input type="text" class="form-control" [(ngModel)]="inputValue">
+<p>{{inputValue}}</p>
+<!-- *ngIf *is required -->
+<p *ngIf="inputValue">hello bro</p>
+<!-- ngStyle used as property binding-->
+<p [ngStyle]="{background: 'red'}">heyyyyy</p>
+<!-- ngClass used for adding class conditionally -->
+<p [ngClass]="{ngClassEx : inputValue}">using ng class for class only applies when input has value</p>
+<!-- *ngFor * is required -->
+<p *ngFor="let server of servers; let i = index">{{server }} {{i}}</p>

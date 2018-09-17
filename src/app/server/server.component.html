@@ -22,3 +22,17 @@
 <p [ngClass]="{ngClassEx : inputValue}">using ng class for class only applies when input has value</p>
 <!-- *ngFor * is required -->
 <p *ngFor="let server of servers; let i = index">{{server }} {{i}}</p>
+<!-- ng-content  used to render content inside selector-->
+<!-- <app-xyz>
+  <p>sadasdsadsd</p>
+</app-xyz> -->
+<!--ngOnInit runs after constructor  -->
+<!--Directives  -->
+
+<!-- attribute and structure ==>Directives
+
+structural - modifies the dom, HTML structure, eg ngIF ngFor,
+             * is added before structural directive
+attribute - modifies only the property and affect only the element they are added to, 
+             eg - ngClass, ngStyle
+             [ngClass]="odd: odd/2!==0" , first is the class name second param is the condition -->

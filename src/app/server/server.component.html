@@ -36,3 +36,15 @@ structural - modifies the dom, HTML structure, eg ngIF ngFor,
 attribute - modifies only the property and affect only the element they are added to, 
              eg - ngClass, ngStyle
              [ngClass]="odd: odd/2!==0" , first is the class name second param is the condition -->
+<!-- ngSwitch its like switch case  -->
+<div [ngSwitch]="value">
+  <p *ngSwitchCase="5">Value is 5</p>
+  <p *ngSwitchCase="10">Value is 10</p>
+  <p *ngSwitchCase="100">Value is 100</p>
+  <p *ngSwitchDefault>Value is Default</p>
+</div>
+
+<!-- Injecting service -> we need to provide in the providers[],
+services can be provided at app level for all component,
+provided at component so it will be available for child comp,
+to use service in other service use Injectable() where u want to inject the service -->

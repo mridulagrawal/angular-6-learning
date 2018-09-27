@@ -1,6 +1,8 @@
 <div class="row">
-  <div class="col-xs-12">
-    <img [src]="recipe.imagePath" alt="{{recipe.name}}" class="img-responsive" style="max-height: 300px;">
+  <div class="col-xs-6 col-md-12">
+    <a href="javascript: void(0)" class="thumbnail">
+      <img [src]="recipe.imagePath" alt="{{recipe.name}}" class="img-responsive">
+    </a>
   </div>
 </div>
 <div class="row">
@@ -20,10 +22,10 @@
           <a href="javascript:void(0)" (click)="AddToShoppingList()">Shopping List</a>
         </li>
         <li>
-          <a href="javascript:void(0)">Save</a>
+          <a href="javascript:void(0)" (click)="onEditRecipe()">Edit Recipe</a>
         </li>
         <li>
-          <a href="javascript:void(0)">Fetch</a>
+          <a href="javascript:void(0)" (click)="onDeleteRecipe()">Delete Recipe</a>
         </li>
       </ul>
     </div>

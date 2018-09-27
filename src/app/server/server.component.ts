@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./server.component.css']
 })
 export class ServerComponent implements OnInit {
-  name: string = 'Mridul';
-  buttonProp: boolean = false;
+  name: String = 'Mridul';
+  buttonProp: Boolean = false;
   textBtn: string;
-  inputValue: string = '';
+  inputValue: String = '';
   servers: Array<string> = ['test1', 'test2', 'test5'];
 
   constructor() {

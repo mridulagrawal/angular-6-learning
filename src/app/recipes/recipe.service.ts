@@ -67,4 +67,9 @@ export class RecipeService {
     this.modifiedRecipe.next(this.getRecipes());
   }
 
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.modifiedRecipe.next(this.getRecipes());
+  }
+
 }

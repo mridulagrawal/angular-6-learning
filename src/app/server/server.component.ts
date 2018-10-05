@@ -11,6 +11,7 @@ export class ServerComponent implements OnInit {
   textBtn: string;
   inputValue: String = '';
   servers: Array<string> = ['test1', 'test2', 'test5'];
+  value: Number = 5;
 
   constructor() {
     setTimeout(() => {

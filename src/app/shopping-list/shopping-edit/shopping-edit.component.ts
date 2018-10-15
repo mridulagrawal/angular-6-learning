@@ -12,6 +12,9 @@ import { ShoppingListService } from '../shopping-list.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AmountValidator } from '../../utils/validators';
+import { Store } from '@ngrx/store';
+import * as ShoppingListActions from '../store/shopping-list.action';
+import * as fromShoppingList from '../store/shopping-list.reducer';
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
@@ -27,7 +30,8 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   editedItemIndex: number;
   editMode: Boolean = false;
 
-  constructor(private shoppingListService: ShoppingListService) { }
+  constructor(private shoppingListService: ShoppingListService,
+    private store: Store<fromShoppingList.AppState>) { }
 
   ngOnInit() {
     this.shoppingListForm = new FormGroup({
@@ -51,9 +55,15 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     const ingAmount = this.shoppingListForm.value.amount;
     const newIngredient = new Ingredient(ingName, ingAmount);
     if (!this.editMode) {
-      this.shoppingListService.addIngredient(newIngredient);
+      // this.shoppingListService.addIngredient(newIngredient);
+      this.store.dispatch(new ShoppingListActions.AddIngredientAction(newIngredient));
+
     } else {
-      this.shoppingListService.editIngredient(newIngredient, this.editedItemIndex);
+      this.store.dispatch(new ShoppingListActions.EditIngredientAction({
+        index: this.editedItemIndex,
+        ingredient: newIngredient
+      }));
+      // this.shoppingListService.editIngredient(newIngredient, this.editedItemIndex);
     }
     this.onClear();
   }
@@ -64,7 +74,9 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   onDelete() {
-    this.shoppingListService.removeIngredient(this.editedItemIndex);
+    this.store.dispatch(new ShoppingListActions.DeleteIngredientAction(this.editedItemIndex));
+
+    // this.shoppingListService.removeIngredient(this.editedItemIndex);
     this.onClear();
   }
 

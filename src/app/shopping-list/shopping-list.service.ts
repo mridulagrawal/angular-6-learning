@@ -27,15 +27,15 @@ export class ShoppingListService {
     return this.ingredients[index];
   }
 
-  addIngredient(ingredient: Ingredient) {
-    this.ingredients.push(ingredient);
-    this.modifiedIngredients.next(this.getIngredientsList());
-  }
+  // addIngredient(ingredient: Ingredient) {
+  //   this.ingredients.push(ingredient);
+  //   this.modifiedIngredients.next(this.getIngredientsList());
+  // }
 
-  addIngredients(ingredients: Ingredient[]) {
-    this.ingredients.push(...ingredients);
-    this.modifiedIngredients.next(this.getIngredientsList());
-  }
+  // addIngredients(ingredients: Ingredient[]) {
+  //   this.ingredients.push(...ingredients);
+  //   this.modifiedIngredients.next(this.getIngredientsList());
+  // }
 
   editIngredient(ingredient: Ingredient, index: number) {
     this.ingredients[index] = ingredient;

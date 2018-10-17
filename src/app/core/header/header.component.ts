@@ -2,11 +2,13 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { DataStorageService } from '../../shared/data-storage.service';
 import { AuthService } from '../../auth/auth.service';
-
+import * as fromApp from '../../store/app.reducer';
+import * as fromAuth from '../../auth/store/auth.reducer';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -14,10 +16,15 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  authState: Observable<fromAuth.State>;
+
   constructor(private dataStorageService: DataStorageService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private store: Store<fromApp.AppState>) { }
+
 
   ngOnInit() {
+    this.authState = this.store.select('auth');
   }
 
   onSaveData() {
@@ -33,10 +40,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logOut();
-  }
-
-  isAuthenticated() {
-    return this.authService.isAuthenticated();
   }
 
 }

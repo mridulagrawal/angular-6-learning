@@ -42,7 +42,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       } else {
         this.editMode = false;
       }
-    })
+    });
   }
 
   onSubmit() {

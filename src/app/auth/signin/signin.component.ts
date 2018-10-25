@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { Store } from '@ngrx/store';
+
+import * as fromApp from '../../store/app.reducer';
+import * as AuthActions from '../store/auth.actions';
 
 @Component({
   selector: 'app-signin',
@@ -13,7 +16,7 @@ export class SigninComponent implements OnInit {
   emailId: String = '';
   password: String = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
     this.signInForm = new FormGroup({
@@ -25,10 +28,7 @@ export class SigninComponent implements OnInit {
   onSubmit() {
     const email = this.signInForm.value.emailId;
     const password = this.signInForm.value.password;
-    this.authService.signInUser(email, password)
-      .catch((error) => {
-        console.log(error);
-      });
+    this.store.dispatch(new AuthActions.TrySignInAction({ username: email, password: password }));
   }
 
 }

@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
+import * as firebase from 'firebase';
 
 import { DataStorageService } from '../../shared/data-storage.service';
 import * as fromApp from '../../store/app.reducer';
@@ -39,6 +40,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    // firebase.auth().signOut();
     this.store.dispatch(new AuthActions.LogoutAction());
   }
 
